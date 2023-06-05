@@ -1,0 +1,26 @@
+
+#!/bin/bash
+
+# Set python PATH
+PATH=~/.local/bin:$PATH
+
+# Set the serial port
+PORT="/dev/ttyUSB0"
+
+# Get permissions to write to the PORT
+sudo chmod 666 "$PORT"
+
+# Get the list of .py files in the current directory
+FILES=$(find . -type f -name "*.py")
+
+# Iterate over each file and upload it
+for file in $FILES; do
+    echo "Uploading $file..."
+    ampy -p "$PORT" put "$file"
+done
+
+echo "Upload complete!"
+
+# Enter REPL
+picocom "$PORT" -b115200
+
