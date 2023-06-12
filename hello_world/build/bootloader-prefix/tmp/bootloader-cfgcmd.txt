@@ -1,1 +1,0 @@
-cmd='/usr/bin/cmake;-DSDKCONFIG=/home/jay/Reto/hello_world/sdkconfig;-DIDF_PATH=/home/jay/esp-idf;-DIDF_TARGET=esp32;-DPYTHON_DEPS_CHECKED=1;-DPYTHON=/home/jay/.espressif/python_env/idf5.2_py3.11_env/bin/python;-DEXTRA_COMPONENT_DIRS=/home/jay/esp-idf/components/bootloader;-DPROJECT_SOURCE_DIR=/home/jay/Reto/hello_world;-GNinja;-S;<SOURCE_DIR><SOURCE_SUBDIR>;-B;<BINARY_DIR>'
