@@ -1,4 +1,13 @@
 import machine
+
+"""
+Basic Webpage configuration, based on micropy documentation
+
+by Roy Medina
+
+"""
+
+
 pins = [machine.Pin(i, machine.Pin.IN) for i in (0, 2, 4, 5, 12, 13, 14, 15)]
 
 html = """<!DOCTYPE html>

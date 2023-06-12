@@ -1,6 +1,15 @@
 from machine import Pin
 import utime
 
+"""
+DRIVER FOR MAX6675 THERMOCOUPLE TO DIGITAL CONVERTER
+
+This driver is based on the Arduino library for MAX6675 by Adafruit
+
+Copied to repo by Roy Medina
+
+"""
+
 class MAX6675():
     def __init__(self, so_pin=21, cs_pin=22, sck_pin=23):
         self.cs = Pin(cs_pin, Pin.OUT)

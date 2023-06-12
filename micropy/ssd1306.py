@@ -4,6 +4,14 @@ from micropython import const
 import framebuf
 
 
+"""
+Driver for SSD1306 OLED displays.
+
+Copied to repo by Roy Medina
+
+"""
+
+
 # register definitions
 SET_CONTRAST = const(0x81)
 SET_ENTIRE_ON = const(0xA4)

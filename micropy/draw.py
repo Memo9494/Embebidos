@@ -1,3 +1,12 @@
+"""
+Drawing Library for MicroPython SSD1306 OLED displays.
+draws pixel by pixel circles and elypses
+
+by Roy Medina
+
+"""
+
+
 class Drawer:
     def __init__(self, oled):
         self.oled = oled

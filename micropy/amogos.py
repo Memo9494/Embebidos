@@ -2,6 +2,10 @@ import machine
 import ssd1306
 from draw import Drawer
 
+"""
+ඞ ඞ ඞ
+"""
+
 class Amogos():
     def __init__(self, oled, x0 = 0, y0 = 0):#, texto):
         drawer=Drawer(oled)
