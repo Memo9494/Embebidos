@@ -17,19 +17,20 @@ class Reto():
 
             # Clear the OLED display
             oled.fill(0)
+            oled.text("Mediciones: ", 0, 0)
 
             # Display the signal value on the OLED display
-            oled.text("Temp: {}".format(max.readCelsius()), 0, 0)
+            oled.text("Temp: {}".format(max.readCelsius()), 0, 20)
 
             # Read and print analog value from pin 2
             # set pin 2 to analog input mode
             adc = machine.ADC(machine.Pin(2))
-            oled.text("ADC: {}".format(adc.read()), 0, 10)
+            oled.text("ADC: {}".format(adc.read()), 0, 30)
             print("ADC: {}".format(adc.read()))
 
             oled.show()
-            amogos.Amogos(oled, -30, 0)
-            amogos.Amogos(oled, 30, 0)
+            # amogos.Amogos(oled, -30, 0)
+            # amogos.Amogos(oled, 30, 0)
             time.sleep(1)
             
 
