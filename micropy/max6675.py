@@ -28,8 +28,6 @@ class MAX6675():
     def readCelsius(self):
         data = self.__read_data()
         volts = sum([b * (1 << i) for i, b in enumerate(reversed(data))])
-        print(volts)
-
         return volts * 0.25
 
     def __read_data(self):
@@ -38,9 +36,6 @@ class MAX6675():
         utime.sleep_us(10)
         data = self.__read_word() # (self.__read_byte() << 8) | self.__read_byte()
         self.cs.on()
-
-        print(data)
-        print(data[1:-3])
 
         if data[-3] == 1:
             raise NoThermocoupleAttached()
