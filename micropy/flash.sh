@@ -15,10 +15,11 @@ sudo chmod 666 "$PORT"
 # Get the list of .py files in the current directory
 # FILES=$(find . -type f -name "*.py")
 #ADD modelo_neuronal.pkl
-FILES= "reto_ml.py"
+# FILES= "reto_ml.py"
 # FILES+=" modelo_neuronal.joblib"
 # FILES+="sensor_tempp.py"
 FILES+="SensorDHT.py"
+FIles+="ssd1306.py"
 # Iterate over each file and upload it
 for file in $FILES; do
     echo "Uploading $file..."

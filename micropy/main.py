@@ -11,10 +11,9 @@ while True:
         print("Temperatura Real:", real_temperature)
     if estimated_temperature is not None:
         print("Temperatura Estimada:", estimated_temperature)
-
-    sensor.lcd_str("Temperatura Real",0,0)
-    sensor.lcd_str(str(real_temperature),0,1)
-    sensor.lcd_str("Temperatura Estimada:",0,2)
-    sensor.lcd_str("29",0,3)
-
-    sleep(2)
+    sensor.oled.poweron()
+    sensor.oled.text("temp real "+real_temperature,0,0)
+    sensor.oled.text("temp estim "+estimated_temperature,0,20)
+    sensor.oled.show()
+    
+    sleep(3)

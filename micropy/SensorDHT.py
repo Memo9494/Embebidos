@@ -1,12 +1,11 @@
 import network
 import urequests
-from machine import Pin, I2C
+import machine
+from machine import Pin, SoftI2C
 from time import sleep
 import dht
+import ssd1306
 
-import machine
-from lcd_api import LcdApi
-from i2c_lcd import I2cLcd
 
 
 class SensorDHT:
@@ -23,12 +22,12 @@ class SensorDHT:
         self.URL = "https://retoequipo1-3f172-default-rtdb.firebaseio.com/Reto_Equipo1/.json"
         self.URL_hora = "https://retoequipo1-3f172-default-rtdb.firebaseio.com/Reto_Equipo1/hora.json"
         # Initialize LCD Display
-        I2C_ADDR = 0x27
-        totalRows = 4
-        totalColumns = 20
+        self.i2c = SoftI2C(scl=Pin(5), sda=Pin(4))
+        self.oled_width = 128
+        self.oled_height = 64
+        self.oled = ssd1306.SSD1306_I2C(self.oled_width,self.oled_height,self.i2c)
 
-        self.i2c = I2C(scl=Pin(5), sda=Pin(4), freq=10000)          #initializing the I2C method for ESP8266
-        self.lcd = I2cLcd(self.i2c, I2C_ADDR, totalRows, totalColumns)
+        
 
 
         # Initalize Sensor DHT11
@@ -60,10 +59,10 @@ class SensorDHT:
             temp_real_data = "{\"temp_real\":\"" + str(temp) + "\"}"
             temp_real = urequests.patch(self.URL, data=temp_real_data)
             res_real = temp_real.json()
-            return res_real
+            return str(temp)
         except OSError as e:
             print('Failed to read sensor.')
-            return None
+            return ""
 
     def update_estimated_temperature(self):
         try:
@@ -78,10 +77,11 @@ class SensorDHT:
             else:
                 hora = self.horas_map(hora)
                 temp_est = self.tempb(hora)
+            tempv = temp_est
             temp_est_data = "{\"temp_est\":\"" + str(temp_est) + "\"}"
             temp_est = urequests.patch(self.URL, data=temp_est_data)
             res_est = temp_est.json()
-            return res_est
+            return str(tempv)
         except Exception as e:
             print(f"Error al obtener datos de temperatura estimada: {str(e)}")
-            return None
+            return ""
