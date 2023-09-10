@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # BASH SCRIPT TO AUTOMATE UPLOADING TO THE ESP8266
-# By Roy Medina
 
 # Set python PATH
 PATH=~/.local/bin:$PATH
